@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import logo from "./assets/logo.JPG";
 
 const SECTIONS = [
   { label: "Memberships", path: "/memberships"},
@@ -18,7 +19,7 @@ export default function Home() {
 
         <img
           className="home-avatar"
-          src="logo.JPG"
+          src={logo}
           alt="Club crest"
         />
 

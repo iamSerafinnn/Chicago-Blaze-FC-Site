@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import logo from "./assets/logo.JPG";
 
 const SECTIONS = [
   { label: "Training and Coaching", path: "/training_and_coaching"},
@@ -19,7 +20,7 @@ export default function Services() {
         {/* Club Logo */}
         <img
           className="service-avatar"
-          src="logo.JPG"
+          src={logo}
           alt="Club crest"
         />
 
