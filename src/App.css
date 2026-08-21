@@ -1,0 +1,923 @@
+:root {
+  --pitch: #000000;      /* black */
+  --pitch-dark: #000000;
+  --pitch-light: #1a1a1a;
+  --line: #f4f2ec;       /* chalk-line off-white */
+  --accent: #e4b33c;     /* trophy gold */
+  --accent-dark: #c99524;
+  --text: #f4f2ec;
+  --text-dim: rgba(244, 242, 236, 0.65);
+  --text-blue: #7fb3e8;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  background: var(--pitch);
+  color: var(--text);
+  font-family: "Segoe UI", system-ui, sans-serif;
+  min-height: 100vh;
+}
+
+/* ---------- Home ---------- */
+.home {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  text-align: center;
+  overflow: hidden;
+  background: radial-gradient(
+    ellipse 120% 80% at 50% -10%,
+    var(--pitch-light),
+    var(--pitch) 55%,
+    var(--pitch-dark) 100%
+  );
+}
+
+/* Faint mown-pitch stripes, purely decorative */
+.home-field {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0.025) 0,
+    rgba(255, 255, 255, 0.025) 60px,
+    transparent 60px,
+    transparent 120px
+  );
+  pointer-events: none;
+}
+
+.home-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 420px;
+}
+
+.home-avatar {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--accent);
+  background: var(--pitch-light);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), 0 0 0 6px rgba(228, 179, 60, 0.12);
+}
+
+.home-title {
+  font-size: clamp(2rem, 6vw, 3rem);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+.home-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.home-meta-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--text-dim);
+}
+
+.home-buttons {
+  margin-top: 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(140px, 1fr));
+  gap: 0.85rem;
+  width: 100%;
+}
+
+.home-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text);
+  background: rgba(244, 242, 236, 0.06);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(244, 242, 236, 0.18);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease,
+    transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+.home-button-icon {
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.home-button:hover {
+  background: var(--accent);
+  color: var(--pitch-dark);
+  border-color: var(--accent);
+  box-shadow: 0 6px 18px rgba(228, 179, 60, 0.25);
+  transform: translateY(-2px);
+}
+
+.home-button:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.home-button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.home-footer {
+  margin-top: 1.5rem;
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+/* Stack buttons on small screens */
+@media (max-width: 380px) {
+  .home-buttons {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Membership (page) ---------- */
+
+.service {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+  text-align: center;
+  overflow: hidden;
+  background: radial-gradient(
+    ellipse 120% 80% at 50% -10%,
+    var(--pitch-light),
+    var(--pitch) 55%,
+    var(--pitch-dark) 100%
+  );
+}
+
+/* Faint mown-pitch stripes, purely decorative */
+.service-field {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    115deg,
+    rgba(255, 255, 255, 0.025) 0,
+    rgba(255, 255, 255, 0.025) 60px,
+    transparent 60px,
+    transparent 120px
+  );
+  pointer-events: none;
+}
+
+.service-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  max-width: 420px;
+}
+
+.service-avatar {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--accent);
+  background: var(--pitch-light);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35), 0 0 0 6px rgba(228, 179, 60, 0.12);
+}
+
+.service-title {
+  font-size: clamp(2rem, 6vw, 3rem);
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--text);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+}
+
+.service-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  color: var(--accent);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.service-meta-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--text-dim);
+}
+
+.service-buttons {
+  margin-top: 1.25rem;
+  display: grid;
+  grid-template-columns: repeat(1, minmax(140px, 1fr));
+  gap: 0.85rem;
+  width: 100%;
+}
+
+.service-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem 1.25rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text);
+  background: rgba(244, 242, 236, 0.06);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(244, 242, 236, 0.18);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease,
+    transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+.service-button-icon {
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.service-button:hover {
+  background: var(--accent);
+  color: var(--pitch-dark);
+  border-color: var(--accent);
+  box-shadow: 0 6px 18px rgba(228, 179, 60, 0.25);
+  transform: translateY(-2px);
+}
+
+.service-button:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.service-button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Stack buttons on small screens */
+@media (max-width: 380px) {
+  .service-buttons {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Section pages ---------- */
+
+.section-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+.back-button {
+  background: rgba(255, 183, 2, 0.12);
+  border: none;
+  border-radius: 999px;
+  color: var(--accent);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.back-button:hover {
+  background: rgba(228, 179, 60, 0.12);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.section-title {
+  margin-top: 1rem;
+  font-size: 2rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.section-title-subtext {
+  margin-top: 0.35rem;
+  color: var(--text-dim);
+  font-size: 1rem;
+  letter-spacing: 0.02em;
+}
+
+.section-body {
+  margin-top: 1rem;
+  line-height: 1.6;
+}
+
+/* ---------- Training & Coaching ---------- */
+.training-page {
+  max-width: 720px;
+  margin: 0 auto 0 5vw;
+  padding: 2rem 1.5rem;
+}
+
+.training-options {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(610px, 500px));
+  gap: 1rem;
+}
+
+.training-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem 1.25rem;
+  background: rgba(244, 242, 236, 0.06);
+  border: 1px solid rgba(244, 242, 236, 0.18);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.training-option-title {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+
+.training-option-price {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.training-option-button {
+  margin-top: 0.5rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text);
+  background: rgba(244, 242, 236, 0.06);
+  border: 1px solid rgba(244, 242, 236, 0.18);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease,
+    transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+.training-option-button:hover {
+  background: var(--accent);
+  color: var(--pitch-dark);
+  border-color: var(--accent);
+  box-shadow: 0 6px 18px rgba(228, 179, 60, 0.25);
+  transform: translateY(-2px);
+}
+
+.training-option-button:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.training-option-button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------- Tournaments & Events ---------- */
+
+.tournament-page {
+  max-width: 720px;
+  margin: 0 auto 0 5vw;
+  padding: 2rem 1.5rem;
+}
+
+.tournament-options {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(1230px, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 500px) {
+  .tournament-options {
+    grid-template-columns: 1fr;
+  }
+}
+
+.tournament-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem 1.25rem;
+  background: rgba(244, 242, 236, 0.06);
+  border: 1px solid rgba(244, 242, 236, 0.18);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.tournament-option-title {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+
+.tournament-option-price {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.tournament-option-button {
+  margin-top: 0.5rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text);
+  background: rgba(244, 242, 236, 0.06);
+  border: 1px solid rgba(244, 242, 236, 0.18);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease,
+    transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+.tournament-option-button:hover {
+  background: var(--accent);
+  color: var(--pitch-dark);
+  border-color: var(--accent);
+  box-shadow: 0 6px 18px rgba(228, 179, 60, 0.25);
+  transform: translateY(-2px);
+}
+
+.tournament-option-button:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.tournament-option-button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------- Camps & Clinics ---------- */
+
+.camps-page {
+  max-width: 720px;
+  margin: 0 auto 0 5vw;
+  padding: 2rem 1.5rem;
+}
+
+.camps-options {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(1230px, 1fr));
+  gap: 1rem;
+}
+
+@media (max-width: 500px) {
+  .camps-options {
+    grid-template-columns: 1fr;
+  }
+}
+
+.camps-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem 1.25rem;
+  background: rgba(244, 242, 236, 0.06);
+  border: 1px solid rgba(244, 242, 236, 0.18);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.camps-option-title {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+
+.camps-option-price {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.camps-option-button {
+  margin-top: 0.5rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text);
+  background: rgba(244, 242, 236, 0.06);
+  border: 1px solid rgba(244, 242, 236, 0.18);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease,
+    transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+.camps-option-button:hover {
+  background: var(--accent);
+  color: var(--pitch-dark);
+  border-color: var(--accent);
+  box-shadow: 0 6px 18px rgba(228, 179, 60, 0.25);
+  transform: translateY(-2px);
+}
+
+.camps-option-button:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.camps-option-button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------- Contact ---------- */
+
+.contact-page {
+  max-width: 720px;
+  margin: 0 auto 0 5vw;
+  padding: 2rem 1.5rem;
+}
+
+.contact-links {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 420px;
+}
+
+.contact-link {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 1.25rem 1.5rem;
+  background: rgba(244, 242, 236, 0.06);
+  border: 1px solid rgba(244, 242, 236, 0.18);
+  border-radius: 10px;
+  text-decoration: none;
+  transition: background 0.15s ease, border-color 0.15s ease,
+    transform 0.1s ease, box-shadow 0.15s ease;
+}
+
+.contact-link-label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.contact-link-value {
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+.contact-link:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 6px 18px rgba(228, 179, 60, 0.25);
+  transform: translateY(-2px);
+}
+
+.contact-link:hover .contact-link-label,
+.contact-link:hover .contact-link-value {
+  color: var(--pitch-dark);
+}
+
+.contact-link:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------- Membership ---------- */
+
+.membership-tiers {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(400px, 1fr)); 
+  gap: 1rem;
+}
+
+.membership-tiers-logo {
+  display: block;
+  width: 72px;
+  height: 72px;
+  margin: 1rem auto 0;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--accent);
+  background: var(--pitch-light);
+}
+
+.membership-tiers-page {
+  max-width: 720px;
+  margin: 0 auto 0 5vw;
+  padding: 2rem 1.5rem;
+}
+
+.membership-tier {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.5rem 1.25rem;
+  background: rgba(244, 242, 236, 0.06);
+  border: 1px solid rgba(244, 242, 236, 0.18);
+  border-radius: 10px;
+  text-align: center;
+}
+
+.membership-tier-title {
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text);
+}
+
+.membership-tier-title-plans {
+  padding-top: 1rem;
+}
+
+.membership-tier-divider {
+  width: 100%;
+  margin: 0.75rem 0;
+  border: none;
+  border-top: 1px solid rgba(199, 204, 209, 0.3);
+}
+
+.membership-tier-price {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.membership-tier-perks {
+  list-style: none;
+  padding: 0;
+  margin: 0.25rem 0;
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.membership-tier-moto {
+  list-style: none;
+  padding: 0.45rem 0;
+  margin: 0.15rem 0 0.35rem;
+  border-top: 1px solid rgba(199, 204, 209, 0.3);
+  border-bottom: 1px solid rgba(199, 204, 209, 0.3);
+}
+
+.membership-tier-moto li {
+  color: #c7ccd1;
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-shadow: 0 0 12px rgba(199, 204, 209, 0.45);
+}
+
+.membership-tier-moto li + li {
+  margin-top: 0.25rem;
+}
+
+.membership-tier-moto li::before {
+  content: "\201C";
+}
+
+.membership-tier-moto li::after {
+  content: "\201D";
+}
+
+.membership-tier-button {
+  margin-top: 0.5rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--pitch-dark);
+  background: var(--accent);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+}
+
+.membership-tier-button:hover {
+  background: var(--accent-dark);
+}
+
+.membership-tier-button:active {
+  transform: scale(0.97);
+}
+
+.membership-tier-button:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.membership-tier-included {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--text);
+  background: transparent;
+  border: 1px solid rgba(244, 242, 236, 0.3);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.membership-tier-included:hover {
+  background: rgba(244, 242, 236, 0.08);
+  border-color: var(--accent);
+}
+
+.membership-tier-included:active {
+  transform: scale(0.97);
+}
+
+.membership-tier-included:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.membership-tier-checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0.25rem 0 0;
+  width: 100%;
+  text-align: left;
+  font-size: 0.85rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.membership-tier-checklist li {
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.membership-checklist-yes::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  color: #4caf6d;
+  font-weight: 700;
+}
+
+.membership-checklist-no {
+  color: var(--text-dim);
+}
+
+.membership-checklist-no::before {
+  content: "\2715";
+  position: absolute;
+  left: 0;
+  color: #d9534f;
+}
+
+.membership-tier-stats {
+  list-style: none;
+  padding: 0;
+  margin: 0.25rem 0 0;
+  white-space: pre-line;
+  width: 100%;
+  text-align: left;
+  font-size: 0.85rem;
+}
+
+.membership-tier-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(244, 242, 236, 0.15);
+  color: var(--text);
+}
+
+.membership-tier-stat-value {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.membership-tier-discount {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem;
+  width: 100%;
+  margin: 0.5rem 0 0;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid rgba(244, 242, 236, 0.15);
+  text-align: left;
+  font-size: 0.85rem;
+  color: var(--text);
+}
+
+.membership-tier-discount-label {
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.75rem;
+  color: var(--text-dim);
+}
+
+.membership-tier-discount-value {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.membership-tier-prices {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.membership-tier-price-option {
+  display: flex;
+  flex-direction: column;
+}
+
+.membership-tier-price-plan {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text);
+}
+
+.membership-tier-price {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.membership-tier-price-benefit {
+  font-size: 0.8rem;
+  color: var(--text-dim);
+}
+
+@media (max-width: 760px) {
+  .membership-tiers {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 420px) {
+  .membership-tiers {
+    grid-template-columns: 1fr;
+  }
+}
