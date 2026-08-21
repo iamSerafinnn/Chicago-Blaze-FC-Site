@@ -360,6 +360,12 @@ body {
   gap: 1rem;
 }
 
+@media (max-width: 500px) {
+  .training-options {
+    grid-template-columns: 1fr;
+  }
+}
+
 .training-option {
   display: flex;
   flex-direction: column;
